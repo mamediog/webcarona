@@ -27,7 +27,7 @@ export class CaronaEditComponent implements OnInit {
   onFormSubmit(form: NgForm) {
     var { cidadeOrigem, cidadeDestino, vagas,
       preco, data, hora, descricao } = this.caronasForm.value;
-    
+
     this.caronas = new Carona();
     this.caronas.cidadeOrigem = cidadeOrigem;
     this.caronas.cidadeDestino = cidadeDestino;
@@ -60,6 +60,12 @@ export class CaronaEditComponent implements OnInit {
       });
       this.carona = carona;
     });
+  }
+
+  addDays(date: Date, days: number): Date {
+    var dataAux = new Date();
+    dataAux.setDate(date.getDate() + days);
+    return dataAux;
   }
 
   ngOnInit() {

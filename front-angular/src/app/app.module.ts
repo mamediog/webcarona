@@ -28,6 +28,7 @@ import { CaronaAddComponent } from './components/caronas/carona-add/carona-add.c
 import { CaronaEditComponent } from './components/caronas/carona-edit/carona-edit.component';
 import { CaronaListIdComponent } from './components/caronas/carona-list-id/carona-list-id.component';
 import { UsuarioEditComponent } from './components/usuarios/usuario-edit/usuario-edit.component';
+import { AuthService } from './services/auth.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -63,7 +64,7 @@ import { UsuarioEditComponent } from './components/usuarios/usuario-edit/usuario
     MatSidenavModule,
     MatListModule
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

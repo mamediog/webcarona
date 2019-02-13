@@ -1,18 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { from } from 'rxjs';
 import { UsuarioApiService } from './services/usuario-api.service';
 import { AuthGuardService } from './shared/guards/auth-guard.service';
+import { LoginComponent } from './components/login/login.component';
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.sass']
 })
-export class AppComponent {
+export class AppComponent{
   title = 'Carona';
   validaToken: string;
-  constructor(private router: Router, private api: UsuarioApiService) {}
+  mostrarMenu: boolean = false;
+  constructor(private router: Router, private auth: AuthService) {}
 
   navigate(menu: string) {
     if (menu === 'cadastrar') {
@@ -32,15 +35,15 @@ export class AppComponent {
     }
   }
 
-  isLogged() {
-    const token = localStorage.getItem("usuarioLogado");
-    if(token == null){
-      return false;
-    }
-  }
-
   logout() {
     localStorage.setItem("usuarioLogado", "");
     this.router.navigate(['/login']);
+    location.reload();
+  }
+
+  ngOnInit(){
+    this.auth.mostrarMenuEmitter.subscribe(
+      mostrar => this.mostrarMenu = mostrar
+    );
   }
 }

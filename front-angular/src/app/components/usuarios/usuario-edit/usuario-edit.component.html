@@ -1,0 +1,52 @@
+<div class="component-container mat-elevation-z8">
+    <mat-card class="component-card">
+      <span class="fill-remaining-space">Editar Usuario</span>
+      <form [formGroup]="usersForm" (ngSubmit)="onFormSubmit(usersForm.value)">
+        <mat-form-field class="component-full-width">
+          <input matInput placeholder="Nome" formControlName="nome" [errorStateMatcher]="matcher">
+          <mat-error>
+            <span *ngIf="!usersForm.get('nome').valid && usersForm.get('nome').touched">Digite o
+              Nome</span>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="component-full-width">
+          <input matInput placeholder="Email" formControlName="email" [errorStateMatcher]="matcher">
+          <mat-error>
+            <span *ngIf="!usersForm.get('email').valid && usersForm.get('email').touched">Digite o
+              Email</span>
+          </mat-error>
+        </mat-form-field>
+        <span>Whatsapp</span>
+        <div class="number-row">
+          <mat-form-field class="component-full-width component-ddd">
+            <input matInput placeholder="DDD" formControlName="ddd" [errorStateMatcher]="matcher">
+            <mat-error>
+              <span *ngIf="!usersForm.get('ddd').valid && usersForm.get('ddd').touched">Ensira o
+                DDD</span>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="component-full-width">
+            <input matInput placeholder="Numero" formControlName="numero" [errorStateMatcher]="matcher">
+            <mat-error>
+              <span *ngIf="!usersForm.get('numero').valid && usersForm.get('numero').touched">Digite o
+                Numero</span>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <span>Telefone (Chamadas)</span>
+        <div class="number-row">
+          <mat-form-field class="component-full-width component-ddd">
+            <input matInput placeholder="DDD" formControlName="ddd2" [errorStateMatcher]="matcher">
+          </mat-form-field>
+          <mat-form-field class="component-full-width">
+            <input matInput placeholder="Numero" formControlName="numero2" [errorStateMatcher]="matcher">
+          </mat-form-field>
+        </div>
+        <div class="button-row">
+          <button type="submit" [disabled]="!usersForm.valid" mat-flat-button color="primary">
+            <mat-icon>save</mat-icon>
+          </button>
+        </div>
+      </form>
+    </mat-card>
+  </div>

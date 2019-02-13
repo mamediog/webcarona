@@ -1,0 +1,50 @@
+<div class="component-container mat-elevation-z8">
+  <mat-card class="component-card">
+    <span class="fill-remaining-space">Oferecer Carona</span>
+    <form [formGroup]="caronasForm" (ngSubmit)="onFormSubmit(caronasForm.value)">
+      <mat-form-field class="component-full-width">
+        <input matInput placeholder="Origem" formControlName="cidadeOrigem" [errorStateMatcher]="matcher">
+        <mat-error>
+          <span *ngIf="!caronasForm.get('cidadeOrigem').valid && caronasForm.get('cidadeOrigem').touched">Insira a
+            Origem</span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="component-full-width">
+        <input matInput placeholder="Destino" formControlName="cidadeDestino" [errorStateMatcher]="matcher">
+        <mat-error>
+          <span *ngIf="!caronasForm.get('cidadeDestino').valid && caronasForm.get('cidadeDestino').touched">Insira o
+            Destino</span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="component-full-width">
+        <input type="number" matInput placeholder="Quantidade de Vagas" formControlName="vagas" [errorStateMatcher]="matcher">
+        <mat-error>
+          <span *ngIf="!caronasForm.get('vagas').valid && caronasForm.get('vagas').touched">Quantas vagas?</span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="component-full-width">
+        <input type="number" matInput placeholder="Preço" formControlName="preco" [errorStateMatcher]="matcher">
+        <mat-error>
+          <span *ngIf="!caronasForm.get('preco').valid && caronasForm.get('preco').touched">Preço da Carona</span>
+        </mat-error>
+      </mat-form-field>
+      <span>Dia e Hora</span>
+      <div class="number-row">
+        <mat-form-field class="component-full-width component-date">
+          <input matInput type="date" placeholder="Data" formControlName="data" [errorStateMatcher]="matcher">
+        </mat-form-field>
+        <mat-form-field class="component-full-width component-hora">
+          <input matInput placeholder="Horas" formControlName="hora" [errorStateMatcher]="matcher">
+        </mat-form-field>
+      </div>
+      <mat-form-field class="component-full-width">
+        <input matInput type="" placeholder="Descricao" formControlName="descricao" [errorStateMatcher]="matcher">
+      </mat-form-field>
+      <div class="button-row">
+        <button type="submit" [disabled]="!caronasForm.valid" mat-flat-button color="primary">
+          <mat-icon>save</mat-icon>
+        </button>
+      </div>
+    </form>
+  </mat-card>
+</div>

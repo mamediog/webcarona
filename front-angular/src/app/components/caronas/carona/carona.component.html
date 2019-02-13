@@ -1,0 +1,55 @@
+<form [formGroup]="searchForm" (ngSubmit)="onFormSubmit(searchForm.value)">
+  <div class="example-container buscar-cidade">
+    <mat-form-field>
+      <input matInput placeholder="Buscar Cidade" formControlName="cidade">
+    </mat-form-field>
+    <button class="btn-search" type="submit" mat-button><mat-icon>search</mat-icon></button>
+  </div>
+</form>
+<mat-card class="example-card" *ngFor="let carona of caronasList">
+  <mat-card-header *ngIf="carona.status == 1" style="border-bottom: solid 5px #33d60e">
+    <mat-card-title>Destino | {{carona.cidadeDestino}}</mat-card-title>
+    <mat-card-subtitle>{{carona.usuario.nome}}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-header *ngIf="carona.status == 0" style="border-bottom: solid 5px red">
+    <mat-card-title>Destino | {{carona.cidadeDestino}}</mat-card-title>
+    <mat-card-subtitle>{{carona.usuario.nome}}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="row-info">
+      <h3>Status: </h3>
+      <span *ngIf="carona.status == 1" style="color: #33d60e"> Disponível</span>
+      <span *ngIf="carona.status == 0" style="color: red"> Fechado</span>
+    </div>
+    <div class="row-info">
+      <h3>Saída: </h3>
+      <span> {{carona.cidadeOrigem}}</span>
+    </div>
+    <div class="row-info">
+      <h3>Vagas: </h3>
+      <span> {{carona.vagas}}</span>
+    </div>
+    <div class="row-info">
+      <h3>Data: </h3>
+      <span> {{carona.data.toString().split('-').reverse().join('/')}}</span>
+    </div>
+    <div class="row-info">
+      <h3>Hora: </h3>
+      <span> {{carona.hora}}</span>
+    </div>
+    <div class="row-info">
+      <h3>Preço: </h3>
+      <span>R$ {{carona.preco}}</span>
+    </div>
+    <div class="row-info">
+      <h3>Detalhes: </h3>
+      <span>{{carona.descricao}}</span>
+    </div>
+  </mat-card-content>
+  <mat-card-actions>
+    <a href="http://api.whatsapp.com/send?1=pt_BR&phone=55{{carona.usuario.telefones.ddd}}{{carona.usuario.telefones.numero}}"
+      target="_blank"><button mat-button>Enviar Mensagem</button></a>
+    <a href="0{{carona.usuario.telefones.ddd2}}{{carona.usuario.telefones.numero2}}" target="_blank"><button
+        mat-button>Ligar</button></a>
+  </mat-card-actions>
+</mat-card>

@@ -1,0 +1,20 @@
+<div class="component-container mat-elevation-z8">
+  <mat-card class="component-card">
+    <mat-card-title>Login</mat-card-title>
+    <mat-card-content>
+      <form class="component-form">
+        <mat-form-field class="component-full-width component-form-input">
+          <input matInput placeholder="Email" [(ngModel)]="userF.email" name="username" required>
+        </mat-form-field>
+
+        <mat-form-field class="component-full-width component-form-input">
+          <input matInput placeholder="Password" [(ngModel)]="userF.senha" type="password" name="password" required>
+        </mat-form-field>
+      </form>
+      <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>
+    </mat-card-content>
+    <mat-card-actions class="btn-login">
+      <button mat-raised-button (click)="login()" color="primary">Login</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

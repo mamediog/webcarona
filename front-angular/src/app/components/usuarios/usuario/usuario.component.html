@@ -1,0 +1,24 @@
+<mat-card class="example-card">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>{{usuario.nome}}</mat-card-title>
+    <mat-card-subtitle>{{usuario.email}}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="user-info">
+      <span>CPF: {{usuario.cpf}}</span>
+    </div>
+    <label class="user-tel">Telefones p/ Contato:</label>
+    <div class="user-info">
+      <span>Whatsapp: ( {{telefones.ddd}} ) - {{telefones.numero}}</span>
+    </div>
+    <div class="user-info">
+      <span>Chamadas: ( {{telefones.ddd2}} ) - {{telefones.numero2}}</span>
+    </div>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button (click)="edit(usuario.id)">
+      <mat-icon>edit</mat-icon> Editar
+    </button>
+  </mat-card-actions>
+</mat-card>

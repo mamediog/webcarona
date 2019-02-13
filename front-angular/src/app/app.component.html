@@ -1,0 +1,43 @@
+<mat-toolbar color="primary">
+  <span class="fill-remaining-space">
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu" [overlapTrigger]="false">
+      <button mat-menu-item (click)="navigate('home')">
+        <mat-icon>home</mat-icon>
+        <span>Home</span>
+      </button>
+      <button mat-menu-item (click)="navigate('cadastrar')" id="no-auth-btn">
+        <mat-icon>account_circle</mat-icon>
+        <span>Cadastrar</span>
+      </button>
+      <button mat-menu-item (click)="navigate('carona-add')" id="auth-btn">
+        <mat-icon>directions_car</mat-icon>
+        <span>Criar Carona</span>
+      </button>
+      <button mat-menu-item (click)="navigate('caronas-list')">
+        <mat-icon>commute</mat-icon>
+        <span>Minhas Caronas</span>
+      </button>
+      <button mat-menu-item (click)="navigate('usuario')" id="no-auth-btn">
+        <mat-icon>face</mat-icon>
+        <span>Meu perfil</span>
+      </button>
+      <button mat-menu-item (click)="navigate('login')" id="no-auth-btn">
+        <mat-icon>fingerprint</mat-icon>
+        <span>Login</span>
+      </button>
+      <button mat-menu-item (click)="navigate('logout')" id="auth-btn">
+        <mat-icon>exit_to_app</mat-icon>
+        <span>Logout</span>
+      </button>
+    </mat-menu>
+  </span>
+  <span class="fill-remaining-space">
+    <mat-icon>commute</mat-icon> Caronas
+  </span>
+</mat-toolbar>
+<div class="container" style="padding-top: 45px">
+  <router-outlet></router-outlet>
+</div>

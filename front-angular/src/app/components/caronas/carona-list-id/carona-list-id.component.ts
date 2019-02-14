@@ -58,9 +58,20 @@ export class CaronaListIdComponent implements OnInit {
   }
 
   deletaCarona(id: number) {
+    var caronaDeleted = new Carona();
+    this.caronasList.forEach((value) => {
+      if(id === value.id){
+        caronaDeleted = value;
+      }
+    });
+
+    const index = this.caronasList.indexOf(caronaDeleted, 0);
+    if (index > -1) {
+      this.caronasList.splice(index, 1);
+    }
     this.api.deleteCarona(id)
       .subscribe(res => {
-        location.reload();
+        this.router.navigate(['/caronas-list']);
       }, (err) => {
         console.log(err);
       }
